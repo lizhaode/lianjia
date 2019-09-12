@@ -12,3 +12,7 @@ mybatis:
 #logging:
 #  level:
 #    root: debug
+
+feign:
+  okhttp:
+    enabled: true
