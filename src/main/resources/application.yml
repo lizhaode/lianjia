@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:mysql://xxxxx:10048/t66y
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.lizhao.lianjiatj.entity.dao
+
+#logging:
+#  level:
+#    root: debug
