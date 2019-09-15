@@ -1,8 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lizhao.lianjiatj.mapper.ForSaleHouseMapper">
+<mapper namespace="com.lizhao.lianjiahouse.mapper.ForSaleHouseMapper">
     <insert id="insertForSaleHouse" parameterType="com.lizhao.lianjiahouse.entity.dao.ForSaleHouseDao">
-        INSERT into
+        INSERT into `for_sale_house`(
+        `house_name`,
+        `area_scope`,
+        `room_scope`,
+        `district`,
+        `street`,
+        `address`,
+        `price`,
+        `total_price`,
+        `total_price_unit`,
+        `url`
+        )
+        values (
+        #{houseName},
+        #{areaScope},
+        #{roomScope},
+        #{district},
+        #{street},
+        #{address},
+        #{price},
+        #{totalPrice},
+        #{totalPriceUnit},
+        #{url}
+        )
     </insert>
+    <select id="selectByHouseName" resultType="com.lizhao.lianjiahouse.entity.dao.ForSaleHouseDao">
+        SELECT * FROM `for_sale_house` WHERE `house_name` = #{houseName}
+    </select>
+    <update id="updateForSaleHouse" parameterType="com.lizhao.lianjiahouse.entity.dao.ForSaleHouseDao">
+        UPDATE `for_sale_house` SET
+        `house_name` = #{houseName},
+        `area_scope` = #{areaScope},
+        `room_scope` = #{roomScope},
+        `district` = #{district},
+        `street` = #{street},
+        `address` = #{address},
+        `price` = #{price},
+        `total_price` = #{totalPrice},
+        `total_price_unit` = #{totalPriceUnit},
+        `url` = ${url}
+        WHERE
+        `id` = #{id}
+    </update>
 </mapper>

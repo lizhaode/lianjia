@@ -9,11 +9,11 @@ class ForSaleHouseDao {
 
     int id
 
-    String house_name
+    String houseName
 
-    String area_scope
+    String areaScope
 
-    String room_scope
+    String roomScope
 
     String district
 
@@ -23,13 +23,13 @@ class ForSaleHouseDao {
 
     int price
 
-    int total_price
+    int totalPrice
 
-    String total_price_unit
+    String totalPriceUnit
 
     String url
 
-    LocalDateTime create_timestamp
+    LocalDateTime createTimestamp
 
-    LocalDateTime update_timestamp
+    LocalDateTime updateTimestamp
 }

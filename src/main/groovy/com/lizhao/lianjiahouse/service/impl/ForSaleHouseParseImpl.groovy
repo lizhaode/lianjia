@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service
 
 @Slf4j
 @Service
-class ForSaleHouseParseImpl implements ForSaleHouseParse{
+class ForSaleHouseParseImpl implements ForSaleHouseParse {
 
     @Autowired
     private StartRequest mStartRequest
@@ -30,9 +30,9 @@ class ForSaleHouseParseImpl implements ForSaleHouseParse{
             log.info("pepare to deal with house info:$it")
             ForSaleHouseDao selectResult = mapper.selectByHouseName(it.title)
             if (selectResult) {
-                saveToMysql(it, 'update')
+                saveToMysql(it, 'update', selectResult.id)
             } else {
-                saveToMysql(it, 'save')
+                saveToMysql(it, 'save', 0)
             }
         }
 
@@ -46,9 +46,9 @@ class ForSaleHouseParseImpl implements ForSaleHouseParse{
                 log.info("pepare to deal with house info:$it")
                 ForSaleHouseDao selectResult = mapper.selectByHouseName(it.title)
                 if (selectResult) {
-                    saveToMysql(it, 'update')
+                    saveToMysql(it, 'update', selectResult.id)
                 } else {
-                    saveToMysql(it, 'save')
+                    saveToMysql(it, 'save', 0)
                 }
             }
             if (data.no_more_data == 1) {
@@ -57,20 +57,21 @@ class ForSaleHouseParseImpl implements ForSaleHouseParse{
         }
     }
 
-    private saveToMysql(HouseList data, String saveOrUpdate) {
+    private saveToMysql(HouseList data, String saveOrUpdate, int id) {
         ForSaleHouseDao houseDao = new ForSaleHouseDao()
-        houseDao.house_name = data.title
-        houseDao.area_scope = data.resblock_frame_area
-        houseDao.room_scope = data.frame_rooms_desc
+        houseDao.houseName = data.title
+        houseDao.areaScope = data.resblock_frame_area
+        houseDao.roomScope = data.frame_rooms_desc
         houseDao.district = data.district
         houseDao.street = data.bizcircle_name
         houseDao.address = data.address
         houseDao.price = data.average_price as int
-        houseDao.total_price = data.total_price_start as int
-        houseDao.total_price_unit = data.total_price_start_unit
+        houseDao.totalPrice = data.total_price_start as int
+        houseDao.totalPriceUnit = data.total_price_start_unit
         houseDao.url = data.url
         switch (saveOrUpdate) {
             case 'save':
+                houseDao.id = id
                 log.info("start insert info:$houseDao")
                 mapper.insertForSaleHouse(houseDao)
                 break
