@@ -42,7 +42,7 @@
         `price` = #{price},
         `total_price` = #{totalPrice},
         `total_price_unit` = #{totalPriceUnit},
-        `url` = ${url}
+        `url` = #{url}
         WHERE
         `id` = #{id}
     </update>

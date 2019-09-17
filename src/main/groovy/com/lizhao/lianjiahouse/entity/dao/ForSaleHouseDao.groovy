@@ -21,9 +21,9 @@ class ForSaleHouseDao {
 
     String address
 
-    int price
+    double price
 
-    int totalPrice
+    double totalPrice
 
     String totalPriceUnit
 

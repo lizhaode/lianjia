@@ -65,17 +65,17 @@ class ForSaleHouseParseImpl implements ForSaleHouseParse {
         houseDao.district = data.district
         houseDao.street = data.bizcircle_name
         houseDao.address = data.address
-        houseDao.price = data.average_price as int
-        houseDao.totalPrice = data.total_price_start as int
+        houseDao.price = data.average_price as double
+        houseDao.totalPrice = data.total_price_start as double
         houseDao.totalPriceUnit = data.total_price_start_unit
         houseDao.url = data.url
         switch (saveOrUpdate) {
             case 'save':
-                houseDao.id = id
                 log.info("start insert info:$houseDao")
                 mapper.insertForSaleHouse(houseDao)
                 break
             case 'update':
+                houseDao.id = id
                 log.info("start update info:$houseDao")
                 mapper.updateForSaleHouse(houseDao)
                 break
