@@ -16,7 +16,7 @@ class SpiderStart {
 
     @GetMapping('/start')
     ResponseBean startUrl() {
-        parse.poolingSaveData()
+        parse.startRequest()
         return ResponseBean.success()
     }
 }

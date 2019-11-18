@@ -1,6 +1,5 @@
 package com.lizhao.lianjiahouse.config
 
-import feign.Logger
 import feign.okhttp.OkHttpClient
 import groovy.util.logging.Slf4j
 import okhttp3.logging.HttpLoggingInterceptor
@@ -8,11 +7,6 @@ import org.springframework.context.annotation.Bean
 
 @Slf4j
 class CustomFeignConfig {
-
-    @Bean
-    Logger.Level feignLoggerLevel() {
-        return Logger.Level.FULL
-    }
 
     @Bean
     OkHttpClient feignClientConfig() {
