@@ -26,3 +26,10 @@ constant:
     receiveResult:
       routing-key: reciveResult
       exchange: lianjia
+    oriHTML:
+      routing-key: toORI
+      exchange: porn91
+    videoHTML:
+      routing-key: toPage
+    videoDown:
+      routing-key: realDown
